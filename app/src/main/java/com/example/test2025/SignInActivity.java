@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,6 +40,29 @@ public class SignInActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("remeberMeCheckBox", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        boolean rememberMeB = sharedPreferences.getBoolean("rememberMe", false);
+        if (rememberMeB) {
+            startActivity(new Intent(this, ProfileActivity.class));
+            finish();
+        }
+
+        rememberMe.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (buttonView.isChecked()) {
+                    editor.putBoolean("rememberMe", true);
+                    editor.apply();
+                } else {
+                    editor.putBoolean("rememberMe", false);
+                    editor.apply();
+                }
+            }
+        });
+
+
         // actions
         goToSignUp.setOnClickListener(v -> {
 
@@ -75,10 +100,9 @@ public class SignInActivity extends AppCompatActivity {
         FirebaseUser loggedUser = firebaseAuth.getCurrentUser();
         if (loggedUser != null) {
             if (loggedUser.isEmailVerified()) {
-                startActivity(new Intent(this, HomeActivity.class));
+                startActivity(new Intent(this, ProfileActivity.class));
                 finish();
-            }else
-            {
+            } else {
                 loggedUser.sendEmailVerification();
                 Toast.makeText(this, "Please verified email", Toast.LENGTH_SHORT).show();
                 progressDialog.dismiss();
