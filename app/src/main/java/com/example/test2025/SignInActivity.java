@@ -45,7 +45,7 @@ public class SignInActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         boolean rememberMeB = sharedPreferences.getBoolean("rememberMe", false);
         if (rememberMeB) {
-            startActivity(new Intent(this, ProfileActivity.class));
+            startActivity(new Intent(this, HomeActivity.class));
             finish();
         }
 
@@ -100,7 +100,7 @@ public class SignInActivity extends AppCompatActivity {
         FirebaseUser loggedUser = firebaseAuth.getCurrentUser();
         if (loggedUser != null) {
             if (loggedUser.isEmailVerified()) {
-                startActivity(new Intent(this, ProfileActivity.class));
+                startActivity(new Intent(this, HomeActivity.class));
                 finish();
             } else {
                 loggedUser.sendEmailVerification();

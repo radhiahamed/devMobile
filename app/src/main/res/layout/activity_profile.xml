@@ -1,104 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/drawer_layout_profile"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProfileActivity">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
 
-    <LinearLayout
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_view_profile"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="10sp"
-        android:layout_marginTop="20sp"
-        android:background="@drawable/shape"
-        android:orientation="vertical"
-        android:padding="35sp">
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:theme="@style/navigationTheme"
+        app:headerLayout="@layout/header_layout"
+        app:itemIconSize="30sp"
+        app:menu="@menu/main_menu" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="User name :"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="italic" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/user_name_profile"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20sp"
-            android:layout_marginTop="5sp"
+            android:orientation="vertical">
 
-            android:hint="name "
-            android:inputType="textEmailAddress"
-            android:textSize="14sp" />
+            <ImageView
+                android:id="@+id/icon_profile"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_margin="15sp"
+                android:src="@drawable/ic_menu" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Email :"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="italic" />
 
-        <EditText
-            android:id="@+id/email_profile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20sp"
-            android:layout_marginTop="5sp"
-            android:drawableEnd="@drawable/ic_email"
-            android:hint="example@gmail.com"
-            android:inputType="textEmailAddress"
-            android:textSize="14sp"
-            android:focusableInTouchMode="true"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10sp"
+                android:layout_marginTop="20sp"
+                android:background="@drawable/shape"
+                android:orientation="vertical"
+                android:padding="35sp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="CIN :"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="italic" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="User name :"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="italic" />
 
-        <EditText
-            android:id="@+id/cin_profile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20sp"
-            android:layout_marginTop="5sp"
-            android:hint="-------"
-            android:inputType="number"
-            android:textSize="14sp" />
+                <EditText
+                    android:id="@+id/user_name_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20sp"
+                    android:layout_marginTop="5sp"
+
+                    android:hint="name "
+                    android:inputType="textEmailAddress"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email :"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="italic" />
+
+                <EditText
+                    android:id="@+id/email_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20sp"
+                    android:layout_marginTop="5sp"
+                    android:drawableEnd="@drawable/ic_email"
+                    android:focusableInTouchMode="true"
+                    android:hint="example@gmail.com"
+                    android:inputType="textEmailAddress"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CIN :"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="italic" />
+
+                <EditText
+                    android:id="@+id/cin_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20sp"
+                    android:layout_marginTop="5sp"
+                    android:hint="-------"
+                    android:inputType="number"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_update"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10sp"
+                android:backgroundTint="@color/black"
+                android:text="UPDATE"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/btn_log_out"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10sp"
+                android:backgroundTint="#EB0D0D"
+                android:text="LOG OUT"
+                app:cornerRadius="20dp" />
+
+
         </LinearLayout>
-
-    <Button
-        android:id="@+id/btn_update"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:backgroundTint="@color/black"
-        android:text="UPDATE"
-        app:cornerRadius="20dp"
-        android:layout_margin="10sp"/>
-
-    <Button
-        android:id="@+id/btn_log_out"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:backgroundTint="#EB0D0D"
-        android:text="LOG OUT"
-        app:cornerRadius="20dp"
-        android:layout_margin="10sp"/>
-
-
-
-</LinearLayout>
-</ScrollView>
+    </ScrollView>
+</androidx.drawerlayout.widget.DrawerLayout>

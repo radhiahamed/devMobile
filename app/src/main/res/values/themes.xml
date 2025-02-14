@@ -13,4 +13,8 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="navigationTheme">
+        <item name="colorPrimary">@color/color_app</item>
+
+    </style>
 </resources>
